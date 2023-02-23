@@ -6,6 +6,6 @@
 
 @layer base {
   html {
-    @apply bg-[#181438] text-slate-50;
+    @apply bg-[#181438] text-white;
   }
 }
