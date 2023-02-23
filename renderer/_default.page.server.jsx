@@ -18,8 +18,8 @@ async function render(pageContext) {
 
   // See https://vite-plugin-ssr.com/head
   const { documentProps } = pageContext.exports;
-  const title = (documentProps && documentProps.title) || "";
-  const desc = (documentProps && documentProps.description) || "";
+  const title = (documentProps && documentProps.title) || undefined;
+  const desc = (documentProps && documentProps.description) || undefined;
 
   const documentHtml = escapeInject`<!DOCTYPE html>
     <html lang="en">
