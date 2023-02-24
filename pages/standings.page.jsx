@@ -15,7 +15,7 @@ function Page() {
             <Row
               username={
                 <div className="text-center w-full">
-                  No qualifiers have concluded, so standings are not avaliable.
+                  Qualifiers have not begun yet, so standings are not avaliable.
                   Check back soon!
                 </div>
               }

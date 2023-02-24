@@ -11,12 +11,14 @@ function Page() {
     viewport: { once: true },
     transition: {
       type: "spring",
+      damping: 20,
+      mass: 1.5,
       delay,
     },
   });
   return (
     <Layout>
-      <div
+      <motion.div
         className="p-8 w-full flex flex-col items-center justify-center min-h-[calc(100vh-8rem)]"
         style={{
           backgroundSize: "auto 75%",
@@ -38,7 +40,7 @@ function Page() {
           <img src="/FABL_TextLogo.svg" alt="FABL" className="h-7 sm:h-11" />
         </motion.div>
         <motion.div
-          {...motionProps(0.6)}
+          {...motionProps(0.55)}
           className="text-2xl sm:text-3xl text-center mb-16"
         >
           The first ever{" "}
@@ -46,13 +48,13 @@ function Page() {
         </motion.div>
         <div className="flex items-center gap-6 sm:gap-8 justify-center">
           <motion.img
-            {...motionProps(1.1)}
+            {...motionProps(1.05)}
             src="/otd.svg"
             className="rounded-full h-20 sm:h-24 w-20 sm:w-24"
             alt="OTD"
           />
           <motion.svg
-            {...motionProps(1.15)}
+            {...motionProps(1.1)}
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -67,13 +69,13 @@ function Page() {
             />
           </motion.svg>
           <motion.img
-            {...motionProps(1.2)}
+            {...motionProps(1.15)}
             src="/mit.webp"
             className="rounded-full h-20 sm:h-24 w-20 sm:w-24"
             alt="MIT"
           />
         </div>
-      </div>
+      </motion.div>
       <div className="relative h-16">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -112,37 +114,25 @@ function Page() {
         </svg>
       </div>
       <div className="p-12 w-full flex flex-col gap-12 items-center justify-evenly min-h-[calc(100vh-8rem)]">
-        <div
-          {...motionProps()}
-          className="font-bold text-3xl sm:text-4xl text-center"
-        >
+        <div className="font-bold text-3xl sm:text-4xl text-center">
           How it Works
         </div>
         <div className="flex items-stretch flex-wrap gap-12 w-full justify-evenly">
-          <div
-            {...motionProps(0.5)}
-            className="flex-1 max-w-xs min-w-[12rem] flex flex-col items-center gap-3"
-          >
+          <div className="flex-1 max-w-xs min-w-[12rem] flex flex-col items-center gap-3">
             <div className="w-full h-48 rounded-sm bg-fabl-indigo-700" />
             <div className="text-center text-xl">
               Fabl is a league sort of tournament where you have to do multiple
               events
             </div>
           </div>
-          <div
-            {...motionProps(0.6)}
-            className="flex-1 max-w-xs min-w-[12rem] flex flex-col items-center gap-3"
-          >
+          <div className="flex-1 max-w-xs min-w-[12rem] flex flex-col items-center gap-3">
             <div className="w-full h-48 rounded-sm bg-fabl-indigo-700" />
             <div className="text-center text-xl">
               Fabl is a league sort of tournament where you have to do multiple
               events
             </div>
           </div>
-          <div
-            {...motionProps(0.7)}
-            className="flex-1 max-w-xs min-w-[12rem] flex flex-col items-center gap-3"
-          >
+          <div className="flex-1 max-w-xs min-w-[12rem] flex flex-col items-center gap-3">
             <div className="w-full h-48 rounded-sm bg-fabl-indigo-700" />
             <div className="text-center text-xl">
               Fabl is a league sort of tournament where you have to do multiple
@@ -153,7 +143,7 @@ function Page() {
       </div>
       <div className="border-2 h-16" />
       <div className="p-8 w-full flex flex-col items-center justify-evenly min-h-[calc(100vh-8rem)]">
-        <div {...motionProps()}>
+        <div>
           <div className="font-bold text-3xl sm:text-4xl text-center" id="play">
             Ready to play?
           </div>
@@ -161,10 +151,7 @@ function Page() {
             Here are the current ongoing qualifiers and whether u can sigunp
           </div>
         </div>
-        <div
-          {...motionProps(0.5)}
-          className="w-full max-w-2xl max-auto p-4 text-2xl flex flex-col gap-4"
-        >
+        <div className="w-full max-w-2xl max-auto p-4 text-2xl flex flex-col gap-4">
           <div className="border-2 border-fabl-indigo-400 rounded-md p-4 flex items-center justify-between">
             <div>Qualifer 1</div>
             <div>concluded</div>
