@@ -10,9 +10,12 @@ const Layout = ({ prose = false, children }) => {
               className="h-full py-1.5 hidden sm:block"
             />
           </a>
-          <div className="flex items-center gap-8 text-lg sm:text-xl font-bold uppercase tracking-wide">
+          <div className="flex items-center gap-8 text-lg sm:text-xl font-semibold uppercase tracking-wide">
             <a href="/standings">Standings</a>
             <a href="/rules">Rules</a>
+            <a href="#play" className="font-black text-fabl-gold">
+              Play
+            </a>
           </div>
         </div>
       </div>

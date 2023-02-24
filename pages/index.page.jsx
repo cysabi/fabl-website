@@ -91,30 +91,32 @@ function Page() {
           />
         </svg>
       </div>
-      <div className="flex flex-col py-16 gap-16">
-        <div>
-          <div className="font-bold text-3xl sm:text-4xl text-center">
-            How it Works
-          </div>
+      <div className="flex flex-col py-16 gap-16 min-h-screen">
+        <div className="font-bold text-3xl sm:text-4xl text-center">
+          How it Works
         </div>
       </div>
-      <div className="flex flex-col py-16 gap-16">
+      <div className="border-2" />
+      <div className="flex flex-col py-16 gap-16 min-h-screen">
         <div>
-          <div className="font-bold text-3xl sm:text-4xl text-center">
-            Qualifiers
+          <div className="font-bold text-3xl sm:text-4xl text-center" id="play">
+            Ready to play?
           </div>
           <div className="font-medium text-xl text-center">
             Here are the current ongoing qualifiers and whether u can sigunp
           </div>
-          <div className="border-2 border-fabl-indigo-400 max-w-2xl mx-auto text-2xl p-4 my-4 flex items-center justify-between">
+          <div className="border-2 border-fabl-indigo-400 rounded-md max-w-2xl mx-auto text-2xl p-4 my-4 flex items-center justify-between">
             <div>Qualifer 1</div>
-            <div>happened</div>
+            <div>concluded</div>
           </div>
-          <div className="border-2 border-fabl-indigo-400 max-w-2xl mx-auto text-2xl p-4 my-4 flex items-center justify-between">
+          <div className="border-2 border-fabl-indigo-400 rounded-md max-w-2xl mx-auto text-2xl p-4 my-4 flex items-center justify-between">
             <div>Qualifer 1</div>
-            <div>open!</div>
+            <div className="ml-auto pr-2 font-bold text-green-400">
+              signup now!
+            </div>
+            <div>open</div>
           </div>
-          <div className="border-2 border-fabl-indigo-400 max-w-2xl mx-auto text-2xl p-4 my-4 flex items-center justify-between">
+          <div className="border-2 border-fabl-indigo-400 rounded-md max-w-2xl mx-auto text-2xl p-4 my-4 flex items-center justify-between">
             <div>Qualifer 1</div>
             <div>future</div>
           </div>
