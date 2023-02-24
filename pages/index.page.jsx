@@ -7,10 +7,11 @@ function Page() {
   return (
     <Layout>
       <div
-        className="p-8 w-full flex flex-col items-center justify-center h-[calc(100vh-8rem)]"
+        className="p-8 w-full flex flex-col items-center justify-center min-h-[calc(100vh-8rem)]"
         style={{
-          backgroundSize: "70px",
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='40' viewBox='0 0 50 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%2328215e' fill-opacity='0.4'%3E%3Cpath d='M40 10L36.67 0h-2.11l3.33 10H20l-2.28 6.84L12.11 0H10l6.67 20H10l-2.28 6.84L2.11 10 5.44 0h-2.1L0 10l6.67 20-3.34 10h2.11l2.28-6.84L10 40h20l2.28-6.84L34.56 40h2.1l-3.33-10H40l2.28-6.84L47.89 40H50l-6.67-20L50 0h-2.1l-5.62 16.84L40 10zm1.23 10l-2.28-6.84L34 28h4.56l2.67-8zm-10.67 8l-2-6h-9.12l2 6h9.12zm-12.84-4.84L12.77 38h15.79l2.67-8H20l-2.28-6.84zM18.77 20H30l2.28 6.84L37.23 12H21.44l-2.67 8zm-7.33 2H16l-4.95 14.84L8.77 30l2.67-8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          backgroundSize: "auto 75%",
+          backgroundPosition: "center",
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='40' viewBox='0 0 50 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%232e225c' fill-opacity='0.33'%3E%3Cpath d='M40 10L36.67 0h-2.11l3.33 10H20l-2.28 6.84L12.11 0H10l6.67 20H10l-2.28 6.84L2.11 10 5.44 0h-2.1L0 10l6.67 20-3.34 10h2.11l2.28-6.84L10 40h20l2.28-6.84L34.56 40h2.1l-3.33-10H40l2.28-6.84L47.89 40H50l-6.67-20L50 0h-2.1l-5.62 16.84L40 10zm1.23 10l-2.28-6.84L34 28h4.56l2.67-8zm-10.67 8l-2-6h-9.12l2 6h9.12zm-12.84-4.84L12.77 38h15.79l2.67-8H20l-2.28-6.84zM18.77 20H30l2.28 6.84L37.23 12H21.44l-2.67 8zm-7.33 2H16l-4.95 14.84L8.77 30l2.67-8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
         }}
       >
         <img
@@ -18,7 +19,7 @@ function Page() {
           alt="FABL"
           className="max-h-40 shrink-0 aspect-square"
         />
-        <div className="text-4xl sm:text-6xl mt-4 mb-2 font-bold flex-wrap text-center justify-center flex items-center gap-4">
+        <div className="text-4xl sm:text-6xl mt-4 mb-2 font-bold flex-wrap text-center justify-center flex items-center gap-2 sm:gap-4">
           <span>Welcome to</span>
           <img src="/FABL_TextLogo.svg" alt="FABL" className="h-7 sm:h-11" />
         </div>
@@ -26,15 +27,26 @@ function Page() {
           The first ever{" "}
           <i className="font-semibold text-fabl-pink">free agent major</i>.
         </div>
-        <div className="flex items-center gap-8 justify-center">
+        <div className="flex items-center gap-6 sm:gap-8 justify-center">
           <img
             src="/otd.svg"
             className="rounded-full h-20 sm:h-24 w-20 sm:w-24"
             alt="OTD"
           />
-          <div className="font-bold text-3xl sm:text-5xl text-center py-8">
-            x
-          </div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={4}
+            stroke="currentColor"
+            className="w-6 sm:w-9 h-6 sm:h-9 shrink-0"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
           <img
             src="/mit.webp"
             className="rounded-full h-20 sm:h-24 w-20 sm:w-24"
@@ -79,10 +91,33 @@ function Page() {
           />
         </svg>
       </div>
-      <div className="flex flex-col py-8 gap-8">
-        <div className="font-bold text-3xl text-center">How it Works</div>
-        <div className="font-bold text-xl text-center">
-          Each person must qualify for 4 events
+      <div className="flex flex-col py-16 gap-16">
+        <div>
+          <div className="font-bold text-3xl sm:text-4xl text-center">
+            How it Works
+          </div>
+        </div>
+      </div>
+      <div className="flex flex-col py-16 gap-16">
+        <div>
+          <div className="font-bold text-3xl sm:text-4xl text-center">
+            Qualifiers
+          </div>
+          <div className="font-medium text-xl text-center">
+            Here are the current ongoing qualifiers and whether u can sigunp
+          </div>
+          <div className="border-2 border-fabl-indigo-400 max-w-2xl mx-auto text-2xl p-4 my-4 flex items-center justify-between">
+            <div>Qualifer 1</div>
+            <div>happened</div>
+          </div>
+          <div className="border-2 border-fabl-indigo-400 max-w-2xl mx-auto text-2xl p-4 my-4 flex items-center justify-between">
+            <div>Qualifer 1</div>
+            <div>open!</div>
+          </div>
+          <div className="border-2 border-fabl-indigo-400 max-w-2xl mx-auto text-2xl p-4 my-4 flex items-center justify-between">
+            <div>Qualifer 1</div>
+            <div>future</div>
+          </div>
         </div>
       </div>
     </Layout>
