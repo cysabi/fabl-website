@@ -91,13 +91,36 @@ function Page() {
           />
         </svg>
       </div>
-      <div className="flex flex-col py-16 gap-16 min-h-screen">
+      <div className="p-12 w-full flex flex-col gap-12 items-center justify-evenly min-h-[calc(100vh-8rem)]">
         <div className="font-bold text-3xl sm:text-4xl text-center">
           How it Works
         </div>
+        <div className="flex items-stretch flex-wrap gap-12 w-full justify-evenly">
+          <div className="flex-1 max-w-xs min-w-[12rem] flex flex-col items-center gap-3">
+            <div className="w-full h-48 rounded-sm bg-fabl-indigo-700" />
+            <div className="text-center text-xl">
+              Fabl is a league sort of tournament where you have to do multiple
+              events
+            </div>
+          </div>
+          <div className="flex-1 max-w-xs min-w-[12rem] flex flex-col items-center gap-3">
+            <div className="w-full h-48 rounded-sm bg-fabl-indigo-700" />
+            <div className="text-center text-xl">
+              Fabl is a league sort of tournament where you have to do multiple
+              events
+            </div>
+          </div>
+          <div className="flex-1 max-w-xs min-w-[12rem] flex flex-col items-center gap-3">
+            <div className="w-full h-48 rounded-sm bg-fabl-indigo-700" />
+            <div className="text-center text-xl">
+              Fabl is a league sort of tournament where you have to do multiple
+              events
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="border-2" />
-      <div className="flex flex-col py-16 gap-16 min-h-screen">
+      <div className="border-2 h-16" />
+      <div className="p-8 w-full flex flex-col items-center justify-evenly min-h-[calc(100vh-8rem)]">
         <div>
           <div className="font-bold text-3xl sm:text-4xl text-center" id="play">
             Ready to play?
@@ -105,21 +128,47 @@ function Page() {
           <div className="font-medium text-xl text-center">
             Here are the current ongoing qualifiers and whether u can sigunp
           </div>
-          <div className="border-2 border-fabl-indigo-400 rounded-md max-w-2xl mx-auto text-2xl p-4 my-4 flex items-center justify-between">
+        </div>
+        <div className="w-full max-w-2xl max-auto p-4 text-2xl flex flex-col gap-4">
+          <div className="border-2 border-fabl-indigo-400 rounded-md p-4 flex items-center justify-between">
             <div>Qualifer 1</div>
             <div>concluded</div>
           </div>
-          <div className="border-2 border-fabl-indigo-400 rounded-md max-w-2xl mx-auto text-2xl p-4 my-4 flex items-center justify-between">
+          <div className="border-2 border-fabl-indigo-400 rounded-md p-4 flex items-center justify-between">
             <div>Qualifer 1</div>
             <div className="ml-auto pr-2 font-bold text-green-400">
               signup now!
             </div>
             <div>open</div>
           </div>
-          <div className="border-2 border-fabl-indigo-400 rounded-md max-w-2xl mx-auto text-2xl p-4 my-4 flex items-center justify-between">
+          <div className="border-2 border-fabl-indigo-400 rounded-md p-4 flex items-center justify-between">
             <div>Qualifer 1</div>
             <div>future</div>
           </div>
+        </div>
+      </div>
+      <div className="bg-fabl-indigo-900/50 h-16">
+        <div className="px-4 max-w-5xl mx-auto flex h-full text-fabl-indigo-300/60 items-center justify-between">
+          <div>
+            A collaboration between{" "}
+            <a
+              className="text-fabl-indigo-300 hover:underline"
+              href="https://otd.ink"
+            >
+              Off the Dial
+            </a>{" "}
+            and{" "}
+            <a
+              className="text-fabl-indigo-300 hover:underline"
+              href="https://discord.gg/p69RF6jRcg"
+            >
+              Mulloway Institute of Turfing
+            </a>
+            , website built by cyrulean.
+          </div>
+          <a className="hover:underline" href="https://otd.ink/legal">
+            Terms of Service
+          </a>
         </div>
       </div>
     </Layout>
