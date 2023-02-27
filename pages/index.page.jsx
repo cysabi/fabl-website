@@ -19,7 +19,7 @@ function Page() {
   return (
     <Layout>
       <motion.div
-        className="p-8 w-full flex flex-col items-center justify-center min-h-[calc(100vh-8rem)]"
+        className="p-8 w-full flex flex-col items-center justify-center bg-fixed min-h-[calc(100vh-8rem)]"
         style={{
           backgroundSize: "auto 75%",
           backgroundPosition: "center",
@@ -41,7 +41,7 @@ function Page() {
         </motion.div>
         <motion.div
           {...motionProps(0.55)}
-          className="text-2xl sm:text-3xl text-center mb-16"
+          className="text-2xl sm:text-3xl text-center mb-16 text-fabl-indigo-50"
         >
           The first ever{" "}
           <i className="font-semibold text-fabl-pink">free agent major</i>.
@@ -88,13 +88,15 @@ function Page() {
           <path
             d="M0 55.5L900 82.5L900 13.5L0 0L0 55.5Z"
             id="Shape"
-            fill="#E20084"
+            fill="currentColor"
+            className="text-fabl-pink-dark"
             stroke="none"
           />
           <path
             d="M0 73.5L900 39.5L900 0L0 13.5L0 73.5Z"
             id="Shape"
-            fill="#FF298F"
+            fill="currentColor"
+            className="text-fabl-pink"
             stroke="none"
           />
         </svg>
@@ -113,86 +115,114 @@ function Page() {
           />
         </svg>
       </div>
-      <div className="p-12 w-full flex flex-col gap-12 items-center justify-evenly min-h-[calc(100vh-8rem)]">
-        <div className="font-bold text-3xl sm:text-4xl text-center">
-          How it Works
+      <div className="text-center font-medium p-6 sm:p-12 flex flex-col items-center justify-evenly min-h-[calc(100vh-8rem)] text-xl sm:text-2xl gap-6 sm:gap-12">
+        <div>
+          <div className="font-bold text-3xl sm:text-4xl">How it Works</div>
+          <div className="text-fabl-indigo-100">
+            Welcome to FABL, the Free Agent Battle League.
+          </div>
         </div>
-        <div className="flex items-stretch flex-wrap gap-12 w-full justify-evenly">
-          <div className="flex-1 max-w-xs min-w-[12rem] flex flex-col items-center gap-3">
-            <div className="w-full h-48 rounded-sm bg-fabl-indigo-700" />
-            <div className="text-center text-xl">
-              Fabl is a league sort of tournament where you have to do multiple
-              events
-            </div>
+        <div className="flex items-stretch flex-wrap gap-6 sm:gap-12 w-full justify-evenly text-fabl-indigo-100">
+          <div className="flex-1 max-w-xs min-w-[12rem] flex flex-col items-center gap-6">
+            <img className="w-32 sm:w-40" src="/game.png" />
+            <p>
+              Battle it out over six qualifiers to be one of the top 32 players
+              who make the cut for the two-day FABL Finals.
+            </p>
           </div>
-          <div className="flex-1 max-w-xs min-w-[12rem] flex flex-col items-center gap-3">
-            <div className="w-full h-48 rounded-sm bg-fabl-indigo-700" />
-            <div className="text-center text-xl">
-              Fabl is a league sort of tournament where you have to do multiple
-              events
-            </div>
+          <div className="flex-1 max-w-xs min-w-[12rem] flex flex-col items-center gap-6">
+            <img className="w-32 sm:w-40" src="/coin.png" />
+            <p>
+              In each qualifier, you'll earn the same points you make in the
+              Swiss stage, plus some bonus points if you progress into the top
+              cut.
+            </p>
           </div>
-          <div className="flex-1 max-w-xs min-w-[12rem] flex flex-col items-center gap-3">
-            <div className="w-full h-48 rounded-sm bg-fabl-indigo-700" />
-            <div className="text-center text-xl">
-              Fabl is a league sort of tournament where you have to do multiple
-              events
-            </div>
+          <div className="flex-1 max-w-xs min-w-[12rem] flex flex-col items-center gap-6">
+            <img className="w-32 sm:w-40" src="/win.png" />
+            <p>
+              Your three highest-scoring qualifiers will place you on the
+              leaderboard, but playing in more may yield you better results!
+            </p>
           </div>
         </div>
       </div>
-      <div className="border-2 h-16" />
-      <div className="p-8 w-full flex flex-col items-center justify-evenly min-h-[calc(100vh-8rem)]">
+      <div className="relative h-16">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-full h-20 absolute inset-0 -translate-y-2 rotate-180"
+          xmlnsXlink="http://www.w3.org/1999/xlink"
+          preserveAspectRatio="none"
+          viewBox="0 0 900 82.5"
+          version="1.1"
+        >
+          <path
+            d="M0 55.5L900 82.5L900 13.5L0 0L0 55.5Z"
+            id="Shape"
+            fill="currentColor"
+            className="text-fabl-indigo-700"
+            stroke="none"
+          />
+          <path
+            d="M0 73.5L900 39.5L900 0L0 13.5L0 73.5Z"
+            id="Shape"
+            fill="currentColor"
+            className="text-fabl-indigo-600"
+            stroke="none"
+          />
+        </svg>
+      </div>
+      <div className="text-center font-medium p-6 sm:p-12 flex flex-col items-center justify-evenly min-h-[calc(100vh-8rem)] text-xl sm:text-2xl">
         <div>
-          <div className="font-bold text-3xl sm:text-4xl text-center" id="play">
+          <div className="font-bold text-3xl sm:text-4xl text-center">
             Ready to play?
           </div>
-          <div className="font-medium text-xl text-center">
-            Here are the current ongoing qualifiers and whether u can sigunp
-          </div>
+          <p className="text-fabl-indigo-100 ">
+            Check the status of upcoming qualifiers, and see whether you can
+            sign up, don't be late!
+          </p>
         </div>
-        <div className="w-full max-w-2xl max-auto p-4 text-2xl flex flex-col gap-4">
-          <div className="border-2 border-fabl-indigo-400 rounded-md p-4 flex items-center justify-between">
-            <div>Qualifer 1</div>
-            <div>concluded</div>
+        <div className="w-full mx-auto max-w-lg p-4 bg-green-400/20 rounded-lg flex flex-col gap-3">
+          <div className="flex items-center gap-3 text-lg uppercase font-semibold tracking-wider text-green-400">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M9.348 14.651a3.75 3.75 0 010-5.303m5.304 0a3.75 3.75 0 010 5.303m-7.425 2.122a6.75 6.75 0 010-9.546m9.546 0a6.75 6.75 0 010 9.546M5.106 18.894c-3.808-3.808-3.808-9.98 0-13.789m13.788 0c3.808 3.808 3.808 9.981 0 13.79M12 12h.008v.007H12V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
+              />
+            </svg>
+            <p>Qualifer 2</p>
           </div>
-          <div className="border-2 border-fabl-indigo-400 rounded-md p-4 flex items-center justify-between">
-            <div>Qualifer 1</div>
-            <div className="ml-auto pr-2 font-bold text-green-400">
-              signup now!
-            </div>
-            <div>open</div>
-          </div>
-          <div className="border-2 border-fabl-indigo-400 rounded-md p-4 flex items-center justify-between">
-            <div>Qualifer 1</div>
-            <div>future</div>
-          </div>
+          <div className="flex items-center gap-3">Open for registration!</div>
         </div>
-      </div>
-      <div className="bg-fabl-indigo-900/50 h-16">
-        <div className="px-4 max-w-5xl mx-auto flex h-full text-fabl-indigo-300/60 items-center justify-between">
-          <div>
-            A collaboration between{" "}
-            <a
-              className="text-fabl-indigo-300 hover:underline"
-              href="https://otd.ink"
-            >
-              Off the Dial
-            </a>{" "}
-            and{" "}
-            <a
-              className="text-fabl-indigo-300 hover:underline"
-              href="https://discord.gg/p69RF6jRcg"
-            >
-              Mulloway Institute of Turfing
-            </a>
-            , website built by cyrulean.
-          </div>
-          <a className="hover:underline" href="https://otd.ink/legal">
-            Terms of Service
-          </a>
+        <div className="w-full mx-auto max-w-lg flex flex-col gap-4">
+          <Qualifer name="Qualifer 1" status="concluded" />
+          <Qualifer name="Qualifer 2" status="concluded" />
+          <Qualifer name="Qualifer 3" status="open" />
+          <Qualifer name="Qualifer 4" status="future" />
+          <Qualifer name="Qualifer 5" status="future" />
+          <Qualifer name="Qualifer 6" status="future" />
         </div>
       </div>
     </Layout>
   );
 }
+
+const Qualifer = ({ name, status }) => (
+  <a
+    className={`rounded-md flex flex-1 w-full items-center justify-between ${
+      status === "open" &&
+      "font-semibold text-green-400 hover:bg-fabl-indigo-700"
+    } ${status === "future" && "text-fabl-indigo-200"}`}
+  >
+    <div>{name}</div>
+    <div>{status}</div>
+  </a>
+);

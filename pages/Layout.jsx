@@ -33,12 +33,36 @@ const Layout = ({ prose = false, children }) => {
         </div>
       </div>
       {prose ? (
-        <main className="prose flex-1 prose-lg prose-slate prose-fabl mx-auto !prose-invert my-16">
+        <main className="prose flex-1 p-4 prose-lg prose-slate prose-fabl mx-auto !prose-invert my-16">
           {children}
         </main>
       ) : (
         <main className="flex-1">{children}</main>
       )}
+      <div className="bg-fabl-indigo-900">
+        <div className="p-4 gap-4 max-w-5xl mx-auto flex text-fabl-indigo-400/50 items-center flex-wrap justify-between">
+          <div>
+            A collaboration between{" "}
+            <a
+              className="text-fabl-indigo-300/70 hover:underline"
+              href="https://otd.ink"
+            >
+              Off the Dial
+            </a>{" "}
+            and{" "}
+            <a
+              className="text-fabl-indigo-300/70 hover:underline"
+              href="https://discord.gg/p69RF6jRcg"
+            >
+              Mulloway Institute of Turfing
+            </a>
+            , website built by cyrulean.
+          </div>
+          <a className="hover:underline" href="https://otd.ink/legal">
+            Terms of Service
+          </a>
+        </div>
+      </div>
     </div>
   );
 };
