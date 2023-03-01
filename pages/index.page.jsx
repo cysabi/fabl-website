@@ -303,9 +303,7 @@ const QualifierStatus = () => {
             </div>
           ) : (
             <>
-              {status === "future" && (
-                <p>Registration opens {format(current[1], "MMMM do")}</p>
-              )}
+              {status === "future" && <p>Registration opens soon</p>}
               {status === "past" && (
                 <p className="text-center w-full">
                   All events have concluded, thanks for playing!
