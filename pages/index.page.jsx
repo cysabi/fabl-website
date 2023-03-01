@@ -172,7 +172,7 @@ function Page() {
           />
         </svg>
       </div>
-      <div className="text-center font-medium p-6 sm:p-12 flex flex-col items-center justify-evenly min-h-[calc(100vh-8rem)] text-xl sm:text-2xl">
+      <div className="text-center font-medium p-6 sm:p-12 flex flex-col items-center justify-evenly min-h-[calc(100vh-8rem)] text-xl sm:text-2xl gap-6 sm:gap-12">
         <div>
           <h2 className="font-bold text-3xl sm:text-4xl text-center" id="play">
             Ready to play?
