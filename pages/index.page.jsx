@@ -1,16 +1,7 @@
 import React, { useRef } from "react";
 import Layout from "./Layout";
 import { motion } from "framer-motion";
-import {
-  addDays,
-  endOfDay,
-  format,
-  isFuture,
-  isPast,
-  isToday,
-  isWithinInterval,
-  startOfDay,
-} from "date-fns";
+import { addDays, format, isPast } from "date-fns";
 import data from "./data";
 
 export { Page };
@@ -191,7 +182,7 @@ function Page() {
           </h3>
           <div className="w-full flex flex-col">
             {Object.entries(data).map(([key, value]) => (
-              <Qualifer key={key} name={key} date={value} />
+              <Qualifer key={key} name={key} data={value} />
             ))}
           </div>
         </div>
@@ -244,7 +235,8 @@ const DownArrow = () => {
 
 const QualifierStatus = () => {
   const current = Object.entries(data).reduce((p, c) => {
-    if (isToday(p[1]) || isFuture(p[1])) {
+    const s = getStatus(p[1]);
+    if (s !== "past") {
       return p;
     }
     return c;
@@ -317,8 +309,8 @@ const QualifierStatus = () => {
   );
 };
 
-const Qualifer = ({ name, date }) => {
-  const status = getStatus(date);
+const Qualifer = ({ name, data }) => {
+  const status = getStatus(data);
 
   return (
     <div
@@ -384,22 +376,17 @@ const Qualifer = ({ name, date }) => {
         )}
         <span>{name}</span>
       </div>
-      <div>{format(date, "MMM do")}</div>
+      <div>{format(data.date, "MMM do")}</div>
     </div>
   );
 };
 
-const getStatus = (date) => {
-  if (
-    isWithinInterval(new Date(), {
-      start: date,
-      end: addDays(date, 1),
-    })
-  ) {
-    return "now";
-  } else if (isFuture(date)) {
-    return "future";
-  } else {
+const getStatus = (data) => {
+  if (isPast(addDays(data.date, 1))) {
     return "past";
+  } else if (data.open) {
+    return "now";
+  } else {
+    return "future";
   }
 };
