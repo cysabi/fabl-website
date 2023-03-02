@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import Layout from "./Layout";
 import { motion } from "framer-motion";
 import { addDays, format, isPast } from "date-fns";
-import data from "./data";
+import data from "../data.js";
 
 export { Page };
 
