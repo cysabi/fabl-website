@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOMServer from "react-dom/server";
 import App from "./App";
 import { escapeInject, dangerouslySkipEscape } from "vite-plugin-ssr";
-import logoUrl from "../public/FABL_IconLogo.svg";
 
 export { render };
 // See https://vite-plugin-ssr.com/data-fetching
