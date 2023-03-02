@@ -18,8 +18,10 @@ async function render(pageContext) {
 
   // See https://vite-plugin-ssr.com/head
   const { documentProps } = pageContext.exports;
-  const title = (documentProps && documentProps.title) || undefined;
-  const desc = (documentProps && documentProps.description) || undefined;
+  const title = (documentProps && documentProps.title) || "FABL";
+  const desc =
+    (documentProps && documentProps.description) ||
+    "Welcome to FABL, the Free Agent Battle League.";
 
   const documentHtml = escapeInject`<!DOCTYPE html>
     <html lang="en">
