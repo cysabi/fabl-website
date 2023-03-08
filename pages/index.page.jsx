@@ -18,7 +18,6 @@ function Page() {
       delay,
     },
   });
-  console.log(Object.entries(data));
 
   return (
     <Layout>

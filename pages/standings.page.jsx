@@ -5,7 +5,6 @@ export { Page };
 
 function Page() {
   const data = useData();
-  console.log(data);
 
   return (
     <Layout>
