@@ -30,6 +30,15 @@ const Table = ({ data }) => {
       </div>
     );
   }
+  if (data?.message) {
+    return (
+      <div className="w-full flex flex-col gap-3">
+        <div className="max-w-2xl w-full rounded-lg p-5 mx-auto text-xl text-center text-red-400 bg-red-400/20">
+          Something went wrong, try again later.
+        </div>
+      </div>
+    );
+  }
 
   if (data.length === 0) {
     return (
@@ -50,6 +59,7 @@ const Table = ({ data }) => {
       </div>
     );
   }
+  console.log(data);
   return (
     <div className="w-full flex flex-col gap-3">
       {data.map((v, i) => (
