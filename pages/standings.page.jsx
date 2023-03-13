@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import * as Collapsible from "@radix-ui/react-collapsible";
 import Layout from "./Layout";
 
 export { Page };
@@ -40,26 +41,6 @@ const Table = ({ data }) => {
     );
   }
 
-  if (data.length === 0) {
-    return (
-      <div className="w-full flex flex-col gap-3">
-        <Row
-          name={
-            <div className="text-center w-full overflow-auto whitespace-normal">
-              Qualifiers have not begun yet, so standings are not avaliable.
-              Check back soon!
-            </div>
-          }
-        />
-        {Array.from({ length: 9 }).map((v, i) => (
-          <div key={i} style={{ opacity: `calc(100% - ${(i + 1) * 10}%)` }}>
-            <Row name={`\u200B`} />
-          </div>
-        ))}
-      </div>
-    );
-  }
-  console.log(data);
   return (
     <div className="w-full flex flex-col gap-3">
       {data.map((v, i) => (
@@ -69,12 +50,12 @@ const Table = ({ data }) => {
           name={
             <div className="flex items-center gap-3">
               <span>{v.splashtag}</span>
-              <div className="flex items-center gap-2">
+              <div className="flex shrink-0 items-center gap-2">
                 {v.weapons.map((weapon) => (
                   <img
                     key={weapon.id}
                     src={`https://raw.githubusercontent.com/Sendouc/sendou.ink/rewrite/public/static-assets/img/main-weapons-outlined/${weapon.id}.png`}
-                    className="h-7 w-7 sm:h-8 sm:w-8"
+                    className="h-7 w-7 sm:h-8 sm:w-8 shrink-0"
                   />
                 ))}
               </div>
@@ -87,35 +68,75 @@ const Table = ({ data }) => {
   );
 };
 
-const Row = ({ placement, name, points }) => (
-  <div className="flex items-center text-xl sm:text-2xl max-w-3xl mx-auto w-full">
-    {placement && (
-      <div
-        className={`shrink-0 pr-4 sm:pr-0 sm:w-16 sm:text-center font-black text-fabl-indigo-light ${
-          placement <= 1
-            ? "!text-fabl-gold"
-            : placement <= 3
-            ? "!text-fabl-pink"
-            : ""
-        }`}
-      >
-        {placement}
+const Row = ({ placement, name, points }) => {
+  const [open, setOpen] = useState(false);
+  const totalPoints = points
+    ? Object.values(points).reduce((a, b) => a + b, 0)
+    : null;
+  return (
+    <Collapsible.Root open={open} onOpenChange={setOpen} asChild>
+      <div className="flex items-center text-xl sm:text-2xl max-w-3xl mx-auto w-full">
+        {placement && (
+          <div
+            className={`shrink-0 font-mono pr-4 sm:pr-0 sm:w-16 sm:text-center font-black text-fabl-indigo-light ${
+              placement <= 1
+                ? "!text-fabl-gold"
+                : placement <= 3
+                ? "!text-fabl-pink"
+                : ""
+            }`}
+          >
+            {placement}
+          </div>
+        )}
+        <Collapsible.Trigger asChild>
+          <button className="flex flex-col items-stretch gap-3 w-full text-xl py-3 px-4 rounded-md font-medium overflow-hidden bg-fabl-indigo-700 hover:bg-fabl-indigo-600 transition-colors">
+            <div className="flex-1 gap-4 flex items-center justify-between">
+              <div className="flex-1 truncate">{name}</div>
+              {points && (
+                <div className="font-mono shrink-0">
+                  <span className="font-bold">{totalPoints}</span>{" "}
+                  <span className="hidden sm:inline">
+                    {open ? "total points" : "points"}
+                  </span>
+                </div>
+              )}
+            </div>
+            <Collapsible.Content asChild>
+              <div className="flex flex-col gap-3">
+                <div className="h-0.5 rounded-full bg-fabl-indigo-500" />
+                {points &&
+                  Object.entries(points).map(([eventName, p]) => (
+                    <EventPoints name={eventName} points={p} />
+                  ))}
+              </div>
+            </Collapsible.Content>
+          </button>
+        </Collapsible.Trigger>
+        {placement && <div className="sm:w-16"></div>}
       </div>
+    </Collapsible.Root>
+  );
+};
+
+const EventPoints = ({ name, points }) => (
+  <div
+    className={`flex-1 gap-4 flex items-center justify-between text-lg ${
+      points === 0
+        ? "text-fabl-indigo-400 line-through"
+        : "text-fabl-indigo-200"
+    }`}
+  >
+    <div className="truncate text-left">{name}</div>
+    <div className="flex-1 border-t-2 border-dotted border-fabl-indigo-500" />
+    {points !== 0 ? (
+      <div className="font-mono shrink-0">
+        <span className="font-bold">{points}</span>{" "}
+        <span className="hidden sm:inline"> points</span>
+      </div>
+    ) : (
+      <div className="font-mono shrink-0">dropped out</div>
     )}
-    <div
-      className={`flex-1 text-xl gap-4 rounded-md font-medium overflow-hidden py-3 px-4 flex items-center justify-between ${
-        placement % 2 === 0 ? "bg-fabl-indigo-700" : "bg-fabl-indigo-700"
-      }`}
-    >
-      <div className="flex-1 truncate">{name}</div>
-      {points && (
-        <div className="font-mono shrink-0">
-          <span className="font-bold">{points}</span>{" "}
-          <span className="hidden sm:inline">points</span>
-        </div>
-      )}
-    </div>
-    {placement && <div className="sm:w-16"></div>}
   </div>
 );
 
