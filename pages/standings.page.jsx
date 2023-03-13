@@ -22,11 +22,13 @@ function Page() {
 const Table = ({ data }) => {
   if (data === undefined) {
     return (
-      <div className="w-full flex flex-col gap-3 animate-pulse">
+      <div className="w-full flex flex-col gap-3">
         {Array.from({ length: 9 }).map((v, i) => (
-          <div key={i} style={{ opacity: `calc(100% - ${(i + 1) * 10}%)` }}>
-            <Row name={`\u200B`} />
-          </div>
+          <div
+            key={i}
+            className="w-full animate-pulse rounded-md bg-fabl-indigo-700 hover:bg-fabl-indigo-600 max-w-2xl mx-auto transition-colors h-14"
+            style={{ opacity: `calc(100% - ${(i + 1) * 10}%)` }}
+          />
         ))}
       </div>
     );
@@ -70,51 +72,47 @@ const Table = ({ data }) => {
 
 const Row = ({ placement, name, points }) => {
   const [open, setOpen] = useState(false);
-  const totalPoints = points
-    ? Object.values(points).reduce((a, b) => a + b, 0)
-    : null;
   return (
-    <Collapsible.Root open={open} onOpenChange={setOpen} asChild>
-      <div className="flex items-center text-xl sm:text-2xl max-w-3xl mx-auto w-full">
-        {placement && (
-          <div
-            className={`shrink-0 font-mono pr-4 sm:pr-0 sm:w-16 sm:text-center font-black text-fabl-indigo-light ${
-              placement <= 1
-                ? "!text-fabl-gold"
-                : placement <= 3
-                ? "!text-fabl-pink"
-                : ""
-            }`}
-          >
-            {placement}
-          </div>
-        )}
-        <Collapsible.Trigger asChild>
-          <button className="flex flex-col items-stretch gap-3 w-full text-xl py-3 px-4 rounded-md font-medium overflow-hidden bg-fabl-indigo-700 hover:bg-fabl-indigo-600 transition-colors">
-            <div className="flex-1 gap-4 flex items-center justify-between">
-              <div className="flex-1 truncate">{name}</div>
-              {points && (
-                <div className="font-mono shrink-0">
-                  <span className="font-bold">{totalPoints}</span>{" "}
-                  <span className="hidden sm:inline">
-                    {open ? "total points" : "points"}
-                  </span>
-                </div>
-              )}
-            </div>
-            <Collapsible.Content asChild>
-              <div className="flex flex-col gap-3">
-                <div className="h-0.5 rounded-full bg-fabl-indigo-500" />
-                {points &&
-                  Object.entries(points).map(([eventName, p]) => (
-                    <EventPoints name={eventName} points={p} />
-                  ))}
-              </div>
-            </Collapsible.Content>
-          </button>
-        </Collapsible.Trigger>
-        {placement && <div className="sm:w-16"></div>}
+    <Collapsible.Root
+      open={open}
+      onOpenChange={setOpen}
+      className="flex items-center text-xl sm:text-2xl max-w-3xl mx-auto w-full"
+    >
+      <div
+        className={`shrink-0 font-mono pr-4 sm:pr-0 sm:w-16 sm:text-center font-black text-fabl-indigo-light ${
+          placement <= 1
+            ? "!text-fabl-gold"
+            : placement <= 3
+            ? "!text-fabl-pink"
+            : ""
+        }`}
+      >
+        {placement}
       </div>
+      <Collapsible.Trigger asChild>
+        <button className="flex flex-col items-stretch gap-3 w-full text-xl py-3 px-4 rounded-md font-medium overflow-hidden bg-fabl-indigo-700 hover:bg-fabl-indigo-600 transition-colors">
+          <div className="flex-1 gap-4 flex items-center justify-between">
+            <div className="flex-1 truncate">{name}</div>
+            <div className="font-mono shrink-0">
+              <span className="font-bold">
+                {Object.values(points).reduce((a, b) => a + b, 0)}
+              </span>{" "}
+              <span className="hidden sm:inline">
+                {open ? "total points" : "points"}
+              </span>
+            </div>
+          </div>
+          <Collapsible.Content asChild>
+            <div className="flex flex-col gap-3">
+              <div className="h-0.5 rounded-full bg-fabl-indigo-500" />
+              {Object.entries(points).map(([eventName, p]) => (
+                <EventPoints name={eventName} points={p} />
+              ))}
+            </div>
+          </Collapsible.Content>
+        </button>
+      </Collapsible.Trigger>
+      <div className="sm:w-16"></div>
     </Collapsible.Root>
   );
 };
