@@ -131,7 +131,7 @@ const EventPoints = ({ name, points }) => (
     <div className="flex-1 border-t-2 border-dotted border-fabl-indigo-500" />
     {points !== 0 ? (
       <div className="font-mono shrink-0">
-        <span className="font-bold">{points}</span>{" "}
+        <span className="font-bold">+{points}</span>{" "}
         <span className="hidden sm:inline"> points</span>
       </div>
     ) : (
