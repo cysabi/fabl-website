@@ -4,6 +4,8 @@ import Layout from "./Layout";
 
 export { Page };
 
+const top = 3;
+
 function Page() {
   const data = useData();
 
@@ -95,19 +97,24 @@ const Row = ({ placement, name, points }) => {
             <div className="flex-1 truncate">{name}</div>
             <div className="font-mono shrink-0">
               <span className="font-bold">
-                {Object.values(points).reduce((a, b) => a + b, 0)}
+                {Object.values(points).reduce(
+                  (a, b, i) => (i < top ? a + b : a),
+                  0
+                )}
               </span>{" "}
               <span className="hidden sm:inline">
-                {open ? "total points" : "points"}
+                {open ? "FABL'd points" : "points"}
               </span>
             </div>
           </div>
           <Collapsible.Content asChild>
             <div className="flex flex-col gap-3">
               <div className="h-0.5 rounded-full bg-fabl-indigo-500" />
-              {Object.entries(points).map(([eventName, p]) => (
-                <EventPoints name={eventName} points={p} />
-              ))}
+              {Object.entries(points)
+                .sort(([_, a], [__, b]) => b - a)
+                .map(([eventName, p], i) => (
+                  <EventPoints i={i} name={eventName} points={p} />
+                ))}
             </div>
           </Collapsible.Content>
         </button>
@@ -117,19 +124,22 @@ const Row = ({ placement, name, points }) => {
   );
 };
 
-const EventPoints = ({ name, points }) => (
+const EventPoints = ({ i, name, points }) => (
   <div
     className={`flex-1 gap-4 flex items-center justify-between text-lg ${
       points === 0
         ? "text-fabl-indigo-400 line-through"
         : "text-fabl-indigo-200"
-    }`}
+    } ${i < top ? "font-semibold" : "text-fabl-indigo-400"}`}
   >
     <div className="truncate text-left">{name}</div>
     <div className="flex-1 border-t-2 border-dotted border-fabl-indigo-500/50" />
     {points !== 0 ? (
       <div className="font-mono shrink-0">
-        <span className="font-bold">+{points}</span>{" "}
+        <span className="font-bold">
+          {i < top ? "+" : ""}
+          {points}
+        </span>{" "}
         <span className="hidden sm:inline"> points</span>
       </div>
     ) : (
