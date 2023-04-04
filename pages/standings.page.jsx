@@ -48,31 +48,13 @@ const Table = ({ data }) => {
   return (
     <div className="w-full flex flex-col gap-3">
       {data.map((v, i) => (
-        <Row
-          placement={i + 1}
-          key={i}
-          name={
-            <div className="flex items-center gap-3">
-              <span>{v.splashtag}</span>
-              <div className="flex shrink-0 items-center gap-2">
-                {v.weapons.map((weapon) => (
-                  <img
-                    key={weapon.id}
-                    src={`https://raw.githubusercontent.com/Sendouc/sendou.ink/rewrite/public/static-assets/img/main-weapons-outlined/${weapon.id}.png`}
-                    className="h-7 w-7 sm:h-8 sm:w-8 shrink-0"
-                  />
-                ))}
-              </div>
-            </div>
-          }
-          points={v.points}
-        />
+        <Row placement={i + 1} key={i} entrant={v} />
       ))}
     </div>
   );
 };
 
-const Row = ({ placement, name, points }) => {
+const Row = ({ placement, entrant }) => {
   const [open, setOpen] = useState(false);
   return (
     <Collapsible.Root
@@ -94,14 +76,22 @@ const Row = ({ placement, name, points }) => {
       <Collapsible.Trigger asChild>
         <button className="flex flex-col items-stretch gap-3 w-full text-xl py-3 px-4 rounded-md font-medium overflow-hidden bg-fabl-indigo-700 hover:bg-fabl-indigo-600 transition-colors">
           <div className="flex-1 gap-4 flex items-center justify-between">
-            <div className="flex-1 truncate">{name}</div>
+            <div className="flex-1 truncate">
+              <div className="flex items-center gap-3">
+                <span>{entrant.splashtag}</span>
+                <div className="flex shrink-0 items-center gap-2">
+                  {entrant.weapons.map((weapon) => (
+                    <img
+                      key={weapon.id}
+                      src={`https://raw.githubusercontent.com/Sendouc/sendou.ink/rewrite/public/static-assets/img/main-weapons-outlined/${weapon.id}.png`}
+                      className="h-7 w-7 sm:h-8 sm:w-8 shrink-0"
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
             <div className="font-mono shrink-0">
-              <span className="font-bold">
-                {Object.values(points).reduce(
-                  (a, b, i) => (i < top ? a + b : a),
-                  0
-                )}
-              </span>{" "}
+              <span className="font-bold">{entrant.total}</span>{" "}
               <span className="hidden sm:inline">
                 {open ? "FABL'd points" : "points"}
               </span>
@@ -110,7 +100,7 @@ const Row = ({ placement, name, points }) => {
           <Collapsible.Content asChild>
             <div className="flex flex-col gap-3">
               <div className="h-0.5 rounded-full bg-fabl-indigo-500" />
-              {Object.entries(points)
+              {Object.entries(entrant.points)
                 .sort(([_, a], [__, b]) => b - a)
                 .map(([eventName, p], i) => (
                   <EventPoints i={i} name={eventName} points={p} />
