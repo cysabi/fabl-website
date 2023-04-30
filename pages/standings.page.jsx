@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import * as Collapsible from "@radix-ui/react-collapsible";
 import Layout from "./Layout";
+import data from "./data.json";
 
 export { Page };
 
 const top = 3;
 
 function Page() {
-  const data = useData();
-
   return (
     <Layout>
       <div className="my-12 gap-12 flex w-full px-4 flex-col">
