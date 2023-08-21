@@ -13,10 +13,6 @@ A website to track the status of FABL.
 2. `npm i`
 3. `npm run dev`
 
----
-
-[**@cerulepto**](https://github.com/LeptoFlare) • [lepto.tech](https://lepto.tech)
-
 <!-- markdown links & imgs -->
 [stars-shield]: https://img.shields.io/github/stars/LeptoFlare/fabl-website.svg?style=social
 [license-shield]: https://img.shields.io/github/license/LeptoFlare/fabl-website.svg?style=flat
